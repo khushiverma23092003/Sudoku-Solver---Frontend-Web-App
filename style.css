@@ -1,0 +1,110 @@
+/* Body & container */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+    background: url('https://images.unsplash.com/photo-1622111496451-b99b6f681f21?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+/* Overlay to make content readable */
+body::before {
+    content: "";
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(255,255,255,0.75);
+    z-index: -1;
+}
+
+.container {
+    background: rgba(255,255,255,0.9);
+    padding: 30px 40px;
+    border-radius: 20px;
+    width: 420px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    transition: 0.3s;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Sudoku input grid */
+#sudokuGrid {
+    display: grid;
+    grid-template-columns: repeat(9, 40px);
+    gap: 5px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#sudokuGrid input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    transition: 0.2s;
+    background-color: rgba(255,255,255,0.85);
+}
+
+#sudokuGrid input:focus {
+    border-color: #ff7f50;
+    box-shadow: 0 0 5px rgba(255,127,80,0.7);
+    outline: none;
+}
+
+/* 3x3 bold borders */
+#sudokuGrid input:nth-child(3n) {
+    border-right: 2px solid #333;
+}
+#sudokuGrid input:nth-child(n+19):nth-child(-n+27),
+#sudokuGrid input:nth-child(n+46):nth-child(-n+54) {
+    border-bottom: 2px solid #333;
+}
+
+/* Solve button */
+button#solveBtn {
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 12px 20px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button#solveBtn:hover {
+    transform: scale(1.05);
+}
+
+/* Solution grid */
+#solutionGrid {
+    display: grid;
+    grid-template-columns: repeat(9, 35px);
+    gap: 5px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#solutionGrid div {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    color: #333;
+    font-size: 16px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
